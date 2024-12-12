@@ -3,9 +3,9 @@ using DbReader;
 
 namespace dipskontor.Events;
 
-public record Event(long Id, string Title, string Description, DateTimeOffset CreatedAt, string Location);
+public record Event(long Id, string Title, string Description, DateTime CreatedAt, string Location);
 
-public record CreateEvent(string Title, string Description, DateTimeOffset CreatedAt, string Location);
+public record CreateEvent(string Title, string Description, DateTime CreatedAt, string Location);
 
 public interface IEventService
 {

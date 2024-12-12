@@ -1,15 +1,18 @@
-import { PulsButton, PulsIconButton } from "@dips/puls-core-react-components";
-import { PlusIcon } from "@dips/arena-core-icons";
+'use client';
+
 import Tabbar from "./components/tabbar";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import Events from "./pages/events";
+import Ideabank from "./pages/ideabank";
 
 export default function Home() {
   return(
-    <main>
-      <Tabbar></Tabbar>
-      <PulsButton mode="primary" size="medium">
-        <PlusIcon />Legg til event
-      </PulsButton>
-
-    </main>
+    <HashRouter>
+      <Routes>
+            <Route index element={<Events />} />
+            <Route path="ideabank" element={<Ideabank />} />
+      </Routes>
+      <Tabbar/>
+    </HashRouter>
   );
 }
