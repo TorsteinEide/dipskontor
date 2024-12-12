@@ -8,7 +8,13 @@ public interface ISqlProvider
 
     string CreateEvent { get; }
 
-    string UpdateEvent { get; }
-
     string DeleteEvent { get; }
+
+    string GetEventTypes { get; }
+
+    string GetEventTypeById { get; }
+
+    string CreateEventType { get; }
+
+    string DeleteEventType { get; }
 }
