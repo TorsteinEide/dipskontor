@@ -7,6 +7,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CakeIcon from '@mui/icons-material/Cake';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import { Link } from 'react-router-dom';
 
 const Tabbar: React.FC = () => {
   const [value, setValue] = React.useState(0);
@@ -14,14 +15,17 @@ const Tabbar: React.FC = () => {
   return (
     <Box>
       <BottomNavigation
-        showLabels
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Events" icon={<CalendarMonthIcon />} />
-        <BottomNavigationAction label="Idébank" icon={<TipsAndUpdatesIcon />} />
+        <Link to="/" >
+          <BottomNavigationAction label="Events" icon={<CalendarMonthIcon />} />
+        </Link>
+        <Link to="/ideabank" >
+          <BottomNavigationAction label="Idébank" icon={<TipsAndUpdatesIcon />} />
+        </Link>
         <BottomNavigationAction label="Kakefredag" icon={<CakeIcon />} />
       </BottomNavigation>
     </Box>
