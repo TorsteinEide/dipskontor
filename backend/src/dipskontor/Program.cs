@@ -1,15 +1,17 @@
+using System.Data;
 using dipskontor;
 using dipskontor.Events;
+using Npgsql;
 using ResourceReader;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
-builder.Services.AddNpgsqlDataSource("Host=postgres;Username=postgres;Password=admin;Database=postgres");
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventTypesService, EventTypesService>();
 builder.Services.AddSingleton<ISqlProvider>(sf => new ResourceBuilder().Build<ISqlProvider>());
+builder.Services.AddTransient<IDbConnection>(sf => new NpgsqlConnection("Host=postgres;Username=postgres;Password=admin;Database=postgres"));
 
 var app = builder.Build();
 
