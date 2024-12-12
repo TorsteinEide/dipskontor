@@ -11,7 +11,12 @@ builder.Services.AddOpenApi();
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventTypesService, EventTypesService>();
 builder.Services.AddSingleton<ISqlProvider>(sf => new ResourceBuilder().Build<ISqlProvider>());
-builder.Services.AddTransient<IDbConnection>(sf => new NpgsqlConnection("Host=postgres;Username=postgres;Password=admin;Database=postgres"));
+builder.Services.AddTransient<IDbConnection>(sf =>
+{
+    var connection = new NpgsqlConnection("Host=postgres;Username=postgres;Password=admin;Database=postgres");
+    connection.Open();
+    return connection;
+});
 
 var app = builder.Build();
 
