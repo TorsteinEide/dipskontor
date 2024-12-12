@@ -108,6 +108,18 @@ app.MapGet("/api/ideas/{id:long}", async (IIdeaService ideaService, long id) =>
     return ideas;
 });
 
+app.MapGet("/api/ideas/{id:long}/likes", async (IIdeaService ideaService, long id) =>
+{
+    var ideas = await ideaService.GetLikes(id);
+    return ideas;
+});
+
+app.MapPost("/api/ideas/{idea_id:long}/like/{user_id:long}", async (IIdeaService ideaService, long idea_id, long user_id) =>
+{
+    await ideaService.AddLike(user_id, idea_id);
+    return Results.Created();
+});
+
 app.MapPost("/api/ideas", async (IIdeaService ideaService, CreateIdea createIdea) =>
 {
     await ideaService.CreateIdea(createIdea);

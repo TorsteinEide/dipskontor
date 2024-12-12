@@ -33,4 +33,8 @@ public interface ISqlProvider
     string CreateIdea { get; }
 
     string DeleteIdea { get; }
+
+    string GetLikes { get; }
+
+    string AddLike { get; }
 }
