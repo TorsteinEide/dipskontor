@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DbReader" Version="2.7.0" />
+    <PackageReference Include="npgsql" Version="9.0.2" />
+  </ItemGroup>
+
 </Project>
