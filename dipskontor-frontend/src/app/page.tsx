@@ -1,7 +1,9 @@
-import Image from "next/image";
+import Tabbar from "./components/tabbar";
 
 export default function Home() {
   return(
-    <div>Hello world</div> 
+    <main>
+      <Tabbar></Tabbar>
+    </main>
   );
 }
