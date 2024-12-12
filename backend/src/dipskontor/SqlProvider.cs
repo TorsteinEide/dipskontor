@@ -37,4 +37,6 @@ public interface ISqlProvider
     string GetLikes { get; }
 
     string AddLike { get; }
+
+    string GetIdeasWithUsers { get; }
 }
