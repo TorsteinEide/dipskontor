@@ -17,4 +17,12 @@ public interface ISqlProvider
     string CreateEventType { get; }
 
     string DeleteEventType { get; }
+
+    string GetUsers { get; }
+
+    string GetUserById { get; }
+
+    string CreateUser { get; }
+
+    string DeleteUser { get; }
 }

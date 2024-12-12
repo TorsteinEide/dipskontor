@@ -1,6 +1,7 @@
 using System.Data;
 using dipskontor;
 using dipskontor.Events;
+using dipskontor.Users;
 using Npgsql;
 using ResourceReader;
 using Scalar.AspNetCore;
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventTypesService, EventTypesService>();
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddSingleton<ISqlProvider>(sf => new ResourceBuilder().Build<ISqlProvider>());
 builder.Services.AddTransient<IDbConnection>(sf =>
 {
@@ -67,6 +69,31 @@ app.MapDelete("/api/eventtypes/{id:long}", async (IEventTypesService eventTypesS
     await eventTypesService.DeleteEventType(id);
     return Results.NoContent();
 });
+
+app.MapGet("/api/users", async (IUserService userService) =>
+{
+    var users = await userService.GetUsers();
+    return users;
+});
+
+app.MapGet("/api/users/{id:long}", async (IUserService userService, long id) =>
+{
+    var users = await userService.GetUserById(id);
+    return users;
+});
+
+app.MapPost("/api/users", async (IUserService userService, CreateUser createUser) =>
+{
+    await userService.CreateUser(createUser);
+    return Results.Created();
+});
+
+app.MapDelete("/api/users/{id:long}", async (IUserService userService, long id) =>
+{
+    await userService.DeleteUser(id);
+    return Results.NoContent();
+});
+
 
 
 app.MapOpenApi();
