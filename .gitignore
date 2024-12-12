@@ -38,3 +38,7 @@ jspm_packages
 .next
 
 .DS_Store
+
+# .NET Core build folders
+bin/
+obj/
