@@ -1,4 +1,4 @@
-FROM docker.artifacts.dev.dips.no/dotnet/sdk:9.0-alpine AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0-alpine AS build
 
 WORKDIR /src
 COPY . .
@@ -6,7 +6,7 @@ COPY . .
 RUN dotnet publish -o app/ src/dipskontor
 
 # Runtime image
-FROM docker.artifacts.dev.dips.no/dotnet/aspnet:9.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-alpine
 
 WORKDIR /app
 
