@@ -3,7 +3,7 @@ using DbReader;
 
 namespace dipskontor.Users;
 
-public record User(long Id, string SlackHandle, string Name);
+public record User(long Id, string SlackHandle, string Name, byte[] Picture);
 
 public record CreateUser(string SlackHandle, string Name, byte[] Picture);
 

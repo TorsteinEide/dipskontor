@@ -1,6 +1,7 @@
 using System.Data;
 using dipskontor;
 using dipskontor.Events;
+using dipskontor.Ideas;
 using dipskontor.Users;
 using Npgsql;
 using ResourceReader;
@@ -12,6 +13,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventTypesService, EventTypesService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IIdeaService, IdeaService>();
 builder.Services.AddSingleton<ISqlProvider>(sf => new ResourceBuilder().Build<ISqlProvider>());
 builder.Services.AddTransient<IDbConnection>(sf =>
 {
@@ -91,6 +93,30 @@ app.MapPost("/api/users", async (IUserService userService, CreateUser createUser
 app.MapDelete("/api/users/{id:long}", async (IUserService userService, long id) =>
 {
     await userService.DeleteUser(id);
+    return Results.NoContent();
+});
+
+app.MapGet("/api/ideas", async (IIdeaService ideaService) =>
+{
+    var ideas = await ideaService.GetIdeas();
+    return ideas;
+});
+
+app.MapGet("/api/ideas/{id:long}", async (IIdeaService ideaService, long id) =>
+{
+    var ideas = await ideaService.GetIdeaById(id);
+    return ideas;
+});
+
+app.MapPost("/api/ideas", async (IIdeaService ideaService, CreateIdea createIdea) =>
+{
+    await ideaService.CreateIdea(createIdea);
+    return Results.Created();
+});
+
+app.MapDelete("/api/ideas/{id:long}", async (IIdeaService ideaService, long id) =>
+{
+    await ideaService.DeleteIdea(id);
     return Results.NoContent();
 });
 
