@@ -8,9 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="DbReader" Version="2.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
     <PackageReference Include="npgsql" Version="9.0.2" />
     <PackageReference Include="Npgsql.DependencyInjection" Version="9.0.2" />
     <PackageReference Include="ResourceReader" Version="1.0.0" />
+    <PackageReference Include="Scalar.AspNetCore" Version="1.2.53" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="**/*.sql" />
