@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
+import "@dips/puls-typography/dist/typography-next.css";
+import "@dips/puls-core-react-components/index.css";
+ 
+const circularFont = localFont({
+    variable: "--font-circular",
+    src: [
+        { path: "../../node_modules/@dips/puls-typography/lib/font/circular/CircularXXWeb-Book.woff", weight: "400" },
+        { path: "../../node_modules/@dips/puls-typography/lib/font/circular/CircularXXWeb-Medium.woff", weight: "500" },
+        { path: "../../node_modules/@dips/puls-typography/lib/font/circular/CircularXXWeb-Bold.woff", weight: "700" }
+    ]
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${circularFont.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>

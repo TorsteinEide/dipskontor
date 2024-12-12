@@ -4,15 +4,15 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CakeIcon from '@mui/icons-material/Cake';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 
 const Tabbar: React.FC = () => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box>
       <BottomNavigation
         showLabels
         value={value}
@@ -20,9 +20,9 @@ const Tabbar: React.FC = () => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Events" icon={<RestoreIcon />} />
-        <BottomNavigationAction label="Idébank" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Kakefredag" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Events" icon={<CalendarMonthIcon />} />
+        <BottomNavigationAction label="Idébank" icon={<TipsAndUpdatesIcon />} />
+        <BottomNavigationAction label="Kakefredag" icon={<CakeIcon />} />
       </BottomNavigation>
     </Box>
   );
