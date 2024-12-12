@@ -5,6 +5,7 @@ namespace dipskontor.Ideas;
 
 public record Idea(long Id, string Title, string Description);
 
+public record IdeaWithUser(long Id, string Title, string Description, long UserId);
 
 public record CreateIdea(string Title, string Description);
 
@@ -21,6 +22,8 @@ public interface IIdeaService
     public Task<long> GetLikes(long idea_id);
 
     public Task AddLike(long user_id, long idea_id);
+
+    public Task<IEnumerable<IdeaWithUser>> GetIdeasWithUsers();
 }
 
 public class IdeaService(IDbConnection dbConnection, ISqlProvider sqlProvider) : IIdeaService
@@ -42,4 +45,7 @@ public class IdeaService(IDbConnection dbConnection, ISqlProvider sqlProvider) :
 
     public async Task AddLike(long user_id, long idea_id)
         => await dbConnection.ExecuteAsync(sqlProvider.AddLike, new { user_id, idea_id });
+
+    public async Task<IEnumerable<IdeaWithUser>> GetIdeasWithUsers()
+        => await dbConnection.ReadAsync<IdeaWithUser>(sqlProvider.GetIdeasWithUsers);
 }
