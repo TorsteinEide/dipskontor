@@ -1,4 +1,4 @@
-using System.Data.Common;
+using System.Data;
 using DbReader;
 
 namespace dipskontor.Events;
@@ -18,7 +18,7 @@ public interface IEventService
     public Task DeleteEvent(long id);
 }
 
-public class EventService(DbConnection dbConnection, ISqlProvider sqlProvider) : IEventService
+public class EventService(IDbConnection dbConnection, ISqlProvider sqlProvider) : IEventService
 {
     public async Task<IEnumerable<Event>> GetEvents()
         => await dbConnection.ReadAsync<Event>(sqlProvider.GetEvents);

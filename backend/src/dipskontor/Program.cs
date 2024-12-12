@@ -6,7 +6,7 @@ using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
-builder.Services.AddNpgsqlDataSource("Host=db;Username=postgres;Password=admin;Database=postgres");
+builder.Services.AddNpgsqlDataSource("Host=postgres;Username=postgres;Password=admin;Database=postgres");
 builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventTypesService, EventTypesService>();
 builder.Services.AddSingleton<ISqlProvider>(sf => new ResourceBuilder().Build<ISqlProvider>());
