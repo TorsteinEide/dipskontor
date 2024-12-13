@@ -6,7 +6,7 @@ const Ideabank: React.FC = () => {
 
   return (
     <div>
-        kjempe bra ideabank
+        kjempe bra ideabank 
     </div>
   );
 }
