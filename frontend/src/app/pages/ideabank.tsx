@@ -16,7 +16,7 @@ const Ideabank: React.FC<IdeaListProps> = (ideasProps) => {
         console.log(ideasProps)
     };
   return (
-    <>
+    <section class="p-4">
         <PulsButton mode="secondary" size="medium" 
             onClick={addIdea}>
             <PlusIcon />Legg til idé
@@ -24,7 +24,7 @@ const Ideabank: React.FC<IdeaListProps> = (ideasProps) => {
         {ideasProps.ideas.map((element, index) => (
             <IdeaComponent key={index} idea={element} />
         ))}
-    </>
+    </section>
   );
 }
 export default Ideabank;
