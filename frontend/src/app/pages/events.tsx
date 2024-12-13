@@ -7,12 +7,12 @@ import { PlusIcon } from "@dips/arena-core-icons";
 
 const Events: React.FC = () => {
 
-    // Declare a state variable named "toggle" with an initial value of false
-    const [toggle, setAlert] = React.useState(false);
+    // Declare a state variable named "showAlert" with an initial value of false
+    const [showAlert, setAlert] = React.useState(false);
   
-    // Function to toggle the value of the "toggle" state
+    // Function to toggle the value of the "showAlert" state
     const toggleAlert = () => {
-      setAlert(!toggle);
+      setAlert(!showAlert);
     };
 
   return (
@@ -24,7 +24,7 @@ const Events: React.FC = () => {
         <PlusIcon />Legg til event
       </PulsButton>
 
-      { toggle ? 
+      { showAlert ? 
       <PulsAlert
         type="error"
         format="messageBox"
