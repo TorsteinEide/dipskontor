@@ -46,8 +46,6 @@ public class IdeaService(IDbConnection dbConnection, ISqlProvider sqlProvider) :
     public async Task AddLike(long user_id, long idea_id)
         => await dbConnection.ExecuteAsync(sqlProvider.AddLike, new { user_id, idea_id });
 
-    public async Task<IdeaWithUser> GetIdeasWithUsers()
-        => (await dbConnection.ReadAsync<IdeaWithUser>(sqlProvider.GetIdeasWithUsers)).Single();
-
-
+    public async Task<IEnumerable<IdeaWithUser>> GetIdeasWithUsers()
+        => await dbConnection.ReadAsync<IdeaWithUser>(sqlProvider.GetIdeasWithUsers);
 }
