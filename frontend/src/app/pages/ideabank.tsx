@@ -6,7 +6,7 @@ import { Idea } from '../types/dataTypes';
 import IdeaComponent from '../components/ideaComponent';
 
 interface IdeaListProps {
-    ideas: [Idea];
+    ideas: Idea[];
 }
 
 const Ideabank: React.FC<IdeaListProps> = (ideasProps) => {
