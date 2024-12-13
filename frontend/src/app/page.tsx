@@ -7,7 +7,7 @@ import PageContext from './context/PageContext'; // Adjust the import path
 import Events from './pages/events';
 import Ideabank from './pages/ideabank';
 import Kakefredag from './pages/kakefredag';
-import { Idea } from './types/dataTypes';
+import { Idea, IEvent } from './types/dataTypes';
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("Events");
@@ -100,12 +100,45 @@ export default function Home() {
     },
   ];
 
+  const mockEvents : IEvent[] = [
+    {
+      id: 1,
+      title: "Nyttårsfest",
+      description: "Nytt av nyåret - vi skal ha nyttårsfest!",
+      createdBy: {
+        name: "Magnus",
+      },
+      location: 'Clarion Hotel',
+      createdAt: new Date(2024,12,12)
+    },
+    {
+      id: 2,
+      title: "Cageball på Sluppen",
+      description: "Vi forsetter hver onsdag i 2025 også.",
+      createdBy: {
+        name: "Stig Rune",
+      },
+      location: '3T-Sluppen,Sluppenvegen 12H, 7037 Trondheim',
+      createdAt: new Date(2024,12,5)
+    },
+    {
+      id: 3,
+      title: "Lønningstreff - Bowling",
+      description: "Bowling på Centrum Bowling 23.01.2025 ",
+      createdBy: {
+        name: "Hilde",
+      },
+      location: 'Trondheim Torg, Tinghusplassen 1, 7013 Trondheim',
+      createdAt: new Date(2024, 12, 1),
+    }
+
+  ]
   return (
     <HashRouter>
       <PageContext.Provider value={{ currentPage, setCurrentPage }}>
         <PageLayout title={currentPage}>
           <Routes>
-            <Route index element={<Events />} />
+            <Route index element={<Events events={mockEvents} />} />
             <Route path="ideabank" element={<Ideabank ideas={mockdata} />} />
             <Route path="kakefredag" element={<Kakefredag />} />
           </Routes>
