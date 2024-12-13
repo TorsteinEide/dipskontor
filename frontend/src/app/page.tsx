@@ -21,21 +21,19 @@ export default function Home() {
       likes: [
         {
           createdBy: {
-            name: "John Doe",
-            picture: "https://randomuser.me/api/portraits/men/32.jpg",
+            name: "Frank",
           },
         },
         {
           createdBy: {
-            name: "Jane Smith",
-            picture: "https://randomuser.me/api/portraits/women/50.jpg",
+            name: "Magnus",
           },
         },
       ],
     },
     {
-      title: "AI-Powered Tutoring App",
-      description: "An app that uses AI to provide personalized tutoring for high school students in math and science.",
+      title: "Havet arena på neste lønningstreff!!",
+      description: "Det er på tide å vise MOT!!! kom igjen da folkens! hopp i havet!",
       createdBy: {
         name: "Bob White",
         picture: "https://randomuser.me/api/portraits/men/41.jpg",
@@ -43,68 +41,59 @@ export default function Home() {
       likes: [
         {
           createdBy: {
-            name: "Alice Green",
-            picture: "https://randomuser.me/api/portraits/women/45.jpg",
+            name: "Torstein",
           },
         },
       ],
     },
     {
-      title: "Community Gardening Initiative",
-      description: "Organize a series of community gardens to promote sustainable food sources.",
+      title: "Kjøpe wii og just dance på kontoret",
+      description: "Viktig med fysisk aktivitet!!",
       createdBy: {
-        name: "Chloe Brown",
-        picture: "https://randomuser.me/api/portraits/women/30.jpg",
+        name: "Rasmus",
       },
       likes: [
         {
           createdBy: {
-            name: "Ethan Grey",
-            picture: "https://randomuser.me/api/portraits/men/38.jpg",
+            name: "Eirin",
           },
         },
         {
           createdBy: {
-            name: "Sophia Black",
-            picture: "https://randomuser.me/api/portraits/women/24.jpg",
+            name: "Stig Rune",
           },
         },
       ],
     },
     {
-      title: "Renewable Energy Course",
-      description: "Develop an online course on building and managing small-scale renewable energy systems.",
+      title: "Lisens på Spotify",
+      description: "Vi trenger musikk på jobben!",
       createdBy: {
-        name: "Daniel Green",
-        picture: "https://randomuser.me/api/portraits/men/28.jpg",
+        name: "Marius",
       },
       likes: [
         {
           createdBy: {
-            name: "Emma Blue",
-            picture: "https://randomuser.me/api/portraits/women/35.jpg",
+            name: "Eirin",
           },
         },
       ],
     },
     {
-      title: "Mental Health Support Platform",
-      description: "Create a platform to connect people with counselors and support groups for mental health assistance.",
+      title: "Innkjøp av flere bøker",
+      description: "The more you know!!",
       createdBy: {
-        name: "Ella Violet",
-        picture: "https://randomuser.me/api/portraits/women/20.jpg",
+        name: "Lalita",
       },
       likes: [
         {
           createdBy: {
-            name: "Daniel Green",
-            picture: "https://randomuser.me/api/portraits/men/28.jpg",
+            name: "Joachim",
           },
         },
         {
           createdBy: {
-            name: "Chloe Brown",
-            picture: "https://randomuser.me/api/portraits/women/30.jpg",
+            name: "Torstein",
           },
         },
       ],
