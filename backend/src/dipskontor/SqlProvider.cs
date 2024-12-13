@@ -17,4 +17,26 @@ public interface ISqlProvider
     string CreateEventType { get; }
 
     string DeleteEventType { get; }
+
+    string GetUsers { get; }
+
+    string GetUserById { get; }
+
+    string CreateUser { get; }
+
+    string DeleteUser { get; }
+
+    string GetIdeas { get; }
+
+    string GetIdeaById { get; }
+
+    string CreateIdea { get; }
+
+    string DeleteIdea { get; }
+
+    string GetLikes { get; }
+
+    string AddLike { get; }
+
+    string GetIdeasWithUsers { get; }
 }
