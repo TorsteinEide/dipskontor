@@ -27,7 +27,7 @@ public class AttendenceService(IDbConnection dbConnection, ISqlProvider sqlProvi
         => (await dbConnection.ReadAsync<Attendence>(sqlProvider.GetAttendenceById, new { id })).Single();
 
     public async Task CreateAttendence(long eventId, long userId)
-        => await dbConnection.ExecuteAsync(sqlProvider.CreateAttendence, new { eventId, userId });
+        => await dbConnection.ExecuteAsync(sqlProvider.CreateAttendence, new { eventId, userId, signuptime = DateTime.Now });
 
     public async Task DeleteAttendence(long eventId, long userId)
         => await dbConnection.ExecuteAsync(sqlProvider.DeleteAttendence, new { eventId, userId });
