@@ -14,6 +14,7 @@ builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventTypesService, EventTypesService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IIdeaService, IdeaService>();
+builder.Services.AddTransient<IAttendenceService, AttendenceService>();
 builder.Services.AddSingleton<ISqlProvider>(sf => new ResourceBuilder().Build<ISqlProvider>());
 builder.Services.AddTransient<IDbConnection>(sf =>
 {
