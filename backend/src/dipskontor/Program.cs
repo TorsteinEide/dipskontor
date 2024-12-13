@@ -14,6 +14,7 @@ builder.Services.AddTransient<IEventService, EventService>();
 builder.Services.AddTransient<IEventTypesService, EventTypesService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IIdeaService, IdeaService>();
+builder.Services.AddTransient<IAttendenceService, AttendenceService>();
 builder.Services.AddSingleton<ISqlProvider>(sf => new ResourceBuilder().Build<ISqlProvider>());
 builder.Services.AddTransient<IDbConnection>(sf =>
 {
@@ -132,6 +133,30 @@ app.MapDelete("/api/ideas/{id:long}", async (IIdeaService ideaService, long id) 
     return Results.NoContent();
 });
 
+
+app.MapGet("/api/events/{eventId:long}/attendences", async (IAttendenceService attendenceService, long eventId) =>
+{
+    var attendences = await attendenceService.GetAttendences();
+    return attendences;
+});
+
+app.MapGet("/api/events/{eventId:long}/attendences/{userId:long}", async (IAttendenceService attendenceService, long eventId, long userId) =>
+{
+    var attendences = await attendenceService.GetAttendenceById(userId);
+    return attendences;
+});
+
+app.MapPost("/api/events/{eventId:long}/attendences/{userId:long}", async (IAttendenceService attendenceService, long eventId, long userId) =>
+{
+    await attendenceService.CreateAttendence(eventId, userId);
+    return Results.Created();
+});
+
+app.MapDelete("/api/events/{eventId:long}/attendences/{userId:long}", async (IAttendenceService attendenceService, long eventId, long userId) =>
+{
+    await attendenceService.DeleteAttendence(eventId, userId);
+    return Results.NoContent();
+});
 
 
 app.MapOpenApi();

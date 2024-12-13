@@ -39,4 +39,12 @@ public interface ISqlProvider
     string AddLike { get; }
 
     string GetIdeasWithUsers { get; }
+
+    string GetAttendences { get; }
+
+    string GetAttendenceById { get; }
+
+    string CreateAttendence { get; }
+
+    string DeleteAttendence { get; }
 }

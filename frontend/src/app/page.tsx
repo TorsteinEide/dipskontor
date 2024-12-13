@@ -14,7 +14,7 @@ export default function Home() {
   const mockdata: Idea[] = [
     {
       title: "Sukkerfri sjokomelk i kjøleskapet",
-      description: "Jeg ønsker veldig gjerne at det er sukkerfri sjokomelk i kjøleskapet på jobben. Det er så godt!",
+      description: "Jeg ønsker at det er sukkerfri sjokomelk. Det er så godt!",
       createdBy: {
         name: "Eirin",
       },
@@ -35,8 +35,7 @@ export default function Home() {
       title: "Havet arena på neste lønningstreff!!",
       description: "Det er på tide å vise MOT!!! kom igjen da folkens! hopp i havet!",
       createdBy: {
-        name: "Bob White",
-        picture: "https://randomuser.me/api/portraits/men/41.jpg",
+        name: "Bob",
       },
       likes: [
         {
