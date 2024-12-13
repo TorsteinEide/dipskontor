@@ -22,10 +22,10 @@ const Events: React.FC<EventListProps> = (eventProps) => {
             <PlusIcon />Legg til event
         </PulsButton>
         {eventProps.events.map((element, index) => (
-            <>
-              <Event key={index} event={element} />
+            <div key={index}>
+              <Event  event={element} />
               <PulsDivider />
-            </>
+            </div>
         ))}
     </>
   );
