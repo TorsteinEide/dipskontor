@@ -13,18 +13,16 @@ public class EventTests
     {
         var connectionString = "Host=localhost;Username=postgres;Password=admin;Database=postgres";
         await using var dataSource = NpgsqlDataSource.Create(connectionString);
-        using var scope = new TransactionScope();
         var sqlProvider = new ResourceBuilder().Build<ISqlProvider>();
         using var connection = dataSource.CreateConnection();
         connection.Open();
         var eventService = new EventService(connection, sqlProvider);
 
-        await eventService.CreateEvent(new CreateEvent("Hei", "Kult", DateTime.Now, "Kontoret"));
+        await eventService.CreateEvent(new CreateEvent("Hei", "Kult", DateTime.Now, "Kontoret", 1));
 
         var events = await eventService.GetEvents();
 
         Assert.NotEmpty(events);
-        scope.Dispose();
     }
 
     [Fact]
@@ -33,12 +31,11 @@ public class EventTests
         var connectionString = "Host=localhost;Username=postgres;Password=admin;Database=postgres";
         await using var dataSource = NpgsqlDataSource.Create(connectionString);
         var sqlProvider = new ResourceBuilder().Build<ISqlProvider>();
-        using var scope = new TransactionScope();
         using var connection = dataSource.CreateConnection();
         connection.Open();
         var eventService = new EventService(connection, sqlProvider);
 
-        await eventService.CreateEvent(new CreateEvent("Hei", "Kult", DateTime.Now, "Kontoret"));
+        await eventService.CreateEvent(new CreateEvent("Hei", "Kult", DateTime.Now, "Kontoret", 1));
 
         var events = await eventService.GetEvents();
 
@@ -49,7 +46,6 @@ public class EventTests
         events = await eventService.GetEvents();
 
         Assert.Empty(events);
-        scope.Dispose();
     }
 
 }

@@ -3,9 +3,9 @@ using DbReader;
 
 namespace dipskontor.Users;
 
-public record User(long Id, string SlackHandle, string Name, byte[] Picture);
+public record User(long Id, string SlackHandle, string Name, string Picture);
 
-public record CreateUser(string SlackHandle, string Name, byte[] Picture);
+public record CreateUser(string SlackHandle, string Name, string Picture);
 
 public interface IUserService
 {
@@ -27,8 +27,8 @@ public class UserService(IDbConnection dbConnection, ISqlProvider sqlProvider) :
     public async Task<User> GetUserById(long id)
         => (await dbConnection.ReadAsync<User>(sqlProvider.GetUserById, new { id })).Single();
 
-    public async Task CreateUser(CreateUser @event)
-        => await dbConnection.ExecuteAsync(sqlProvider.CreateUser, @event);
+    public async Task CreateUser(CreateUser user)
+        => await dbConnection.ExecuteAsync(sqlProvider.CreateUser, new {user.SlackHandle, user.Name, Picture = Convert.FromBase64String(user.Picture)});
 
     public async Task DeleteUser(long id)
         => await dbConnection.ExecuteAsync(sqlProvider.DeleteUser, new { id });

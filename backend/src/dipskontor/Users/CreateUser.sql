@@ -1,1 +1,1 @@
-INSERT INTO users (slack_handle, name, picture) VALUES (:slack_handle, :name, :picture);
+INSERT INTO users (slack_handle, name, picture) VALUES (:slackhandle, :name, :picture);

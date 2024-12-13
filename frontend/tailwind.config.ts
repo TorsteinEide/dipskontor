@@ -11,7 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        widget: "202020"
+        widget: "#202020"
       },
     },
   },

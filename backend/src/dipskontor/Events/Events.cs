@@ -3,9 +3,9 @@ using DbReader;
 
 namespace dipskontor.Events;
 
-public record Event(long Id, string Title, string Description, DateTime CreatedAt, string Location);
+public record Event(long Id, string Title, string Description, DateTime CreatedAt, string Location, long EventTypeId);
 
-public record CreateEvent(string Title, string Description, DateTime CreatedAt, string Location);
+public record CreateEvent(string Title, string Description, string Location, long EventTypeId);
 
 public interface IEventService
 {
@@ -27,7 +27,7 @@ public class EventService(IDbConnection dbConnection, ISqlProvider sqlProvider) 
         => (await dbConnection.ReadAsync<Event>(sqlProvider.GetEventById, new { id })).Single();
 
     public async Task CreateEvent(CreateEvent @event)
-        => await dbConnection.ExecuteAsync(sqlProvider.CreateEvent, @event);
+        => await dbConnection.ExecuteAsync(sqlProvider.CreateEvent, new { @event.Title, @event.Description, CreatedAt = DateTime.Now, @event.Location, @event.EventTypeId });
 
     public async Task DeleteEvent(long id)
         => await dbConnection.ExecuteAsync(sqlProvider.DeleteEvent, new { id });

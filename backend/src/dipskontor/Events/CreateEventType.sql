@@ -1,1 +1,1 @@
-INSERT INTO event_types (name, description, needs_attendence) VALUES (:Title, :Description, :NeedsAttendence);
+INSERT INTO event_types (name, description, needs_attendence) VALUES (:Name, :Description, :NeedsAttendence);
